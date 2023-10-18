@@ -9,7 +9,10 @@ class Webservice{
 
   Future<Story> _getStory(int storyId) async {
     
-    var url = Uri.https('hacker-news.firebaseio.com', 'v0/item/$storyId.json?print=pretty');
+   // var url = Uri.https('hacker-news.firebaseio.com', 'v0/item/$storyId.json?print=pretty');
+      final url = Uri.parse(
+  "https://hacker-news.firebaseio.com/v0/item/$storyId.json?print=pretty",
+);
     final response = await http.get(url);
 
     if(response.statusCode == 200){
@@ -27,7 +30,10 @@ class Webservice{
   Future<List<Story>> getTopStories() async{
 
    // final urlstr = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
-  var url = Uri.https('hacker-news.firebaseio.com', 'v0/topstories.json?print=pretty');
+  //var url = Uri.https('hacker-news.firebaseio.com', 'v0/topstories.json?print=pretty');
+  final url = Uri.parse(
+  "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty",
+);
   final response = await http.get(url);
 
   if(response.statusCode == 200){

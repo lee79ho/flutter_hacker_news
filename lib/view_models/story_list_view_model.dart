@@ -2,16 +2,18 @@
 
 
 
+import 'package:flutter/material.dart';
 import 'package:flutter_application_1/services/webservice.dart';
 import 'package:flutter_application_1/view_models/story_view_model.dart';
 
-class StoryListViewModel{
+class StoryListViewModel extends ChangeNotifier{
 
-  late List<StoryViewModel> stories;//= List<StoryViewModel>();
+  late List<StoryViewModel> stories =  [];
 
-  Future<List<StoryViewModel>> getTopStories() async {
+  Future<void> getTopStories() async {
      final Iterable results = await Webservice().getTopStories();
-     return results.map((story) => StoryViewModel(story: story)).toList();
+     this.stories = results.map((story) => StoryViewModel(story: story)).toList();
+     notifyListeners();
    
   }
 
