@@ -22,14 +22,21 @@ void initState(){
   @override
   Widget build(BuildContext context){
     
-    final vm = Provider.of<StoryListViewModel>(context);
-    debugPrint("${vm.stories.length}");
+  //  final vm = Provider.of<StoryListViewModel>(context);
+  //  debugPrint("${vm.stories.length}");
 
      return Scaffold(
         appBar: AppBar(
           title: Text("Hacker News")
         ),
-        body: StoryList(stories: vm.stories)
+        body: 
+        Consumer<StoryListViewModel>(
+          builder: (context, vm, child){
+            return StoryList(stories: vm.stories); 
+          }
+
+        )
+       
       );
   }
 }
