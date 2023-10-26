@@ -17,7 +17,10 @@ class StoryViewModel{
   
   }
 
-  
+  int get noOfComments{
+    return this.story.commentIds.length;
+
+  }
 
 
 
