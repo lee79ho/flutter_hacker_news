@@ -1,12 +1,13 @@
 
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/view_models/story_view_model.dart';
 
 class StoryList extends StatelessWidget {
 
   final List<StoryViewModel> stories;
-  final VoidCallback onSelected;
+  final Function(StoryViewModel)   onSelected;
 
 
 
@@ -23,6 +24,7 @@ class StoryList extends StatelessWidget {
       return ListTile(
         onTap: (){
           // perform navigation here
+          this.onSelected(story);
 
         },
         title:  Text(story.title, style: TextStyle(fontSize: 20)),
