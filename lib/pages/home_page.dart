@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/comment_list_page.dart';
+import 'package:flutter_application_1/view_models/commnet_list_view_model.dart';
 import 'package:flutter_application_1/view_models/story_list_view_model.dart';
 import 'package:flutter_application_1/view_models/story_view_model.dart';
 import 'package:flutter_application_1/widgets/story_list.dart';
@@ -23,7 +25,11 @@ void initState(){
   void  _navigateToCommentsPage(BuildContext context, StoryViewModel story)
   {
     Navigator.push(context, MaterialPageRoute(
-      builder: (context) => Text(story.title)
+      builder: (context) =>
+      ChangeNotifierProvider(create: (
+        context)=> CommentListViewModel(),
+        child:CommentListPage(story: story)
+      )
     ));
   }
 

@@ -1,8 +1,4 @@
 
-
-
-import 'dart:js_interop';
-
 import '../models/comment.dart';
 
 class CommentViewModel {
